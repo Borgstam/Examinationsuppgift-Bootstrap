@@ -1,0 +1,67 @@
+/* 
+Elev: Wilhelm Borgstam
+Uppgift: Examinationsuppgift Ramverk - Bootstrap
+Datum: 2024-10-10
+ */
+
+/* Index.html */
+
+/* Hade svårighet med att få till en snygg hero sektion på startsidan och till slut tröttnade jag och använde mig av följande CSS kod */
+.hero {
+  height: 75vh; /* Ser till att den tar upp 75vh för att indikera för besökaren att det finns innehåll som den bör scrolla ner för att se */
+  background-image: url("images/qui-nguyen-cnTdKzMOBns-unsplash\ 1\ 1.webp"); /* Ser till att bakgrundsbilden tar upp .hero diven */
+  background-size: cover; /* Ser till att bilden täcker hela ytan */
+  background-position: center; /* Centrerar bilden */
+  background-repeat: no-repeat; /* Ser till att bilden ej upprepar */
+  position: relative; /* tillåter andra element att positioneras ovanpå bilden */
+}
+
+/* En liten effekt varpå korten nedanför hero upplevs 'hopppa' när användaren har sin muspekare över dem */
+.card-hover {
+  cursor: pointer; /* Ändrar muspekaren til len hand */
+  transition: transform 0.4s ease, box-shadow 0.4s ease,
+    background-color 0.4s ease; /* Informerar om att förändringarna ska ske över 0.4 sekunder samt 'mjukt' */
+}
+
+.card-hover:hover {
+  background-color: #f0f0f0; /* Ändrar bakgrundsfärgen */
+  transform: translateY(-5px); /* Lyfter upp kortet något */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Add a deeper shadow */
+}
+
+/* Zoom effekt vid hovring över de sex bilderna under korten på startsidan */
+.zoom {
+  transition: transform 0.5s ease; /* förändring ska ske mjukt över 0.5 sekunder */
+  cursor: pointer; /* Ändrar muspekaren till en hand */
+}
+
+.zoom:hover {
+  transform: scale(1.04); /* Skalar upp bilderna med 4% */
+}
+
+/* FOOTER */
+/* Hade svårt att få till färger då Bootstrap klasser krockade med varandra */
+.social-icon {
+  color: #ffffff; /* Gör ikonerna vit */
+  transition: color 0.3s ease-in-out;
+  font-size: 30px; /* Gör ikonerna större */
+}
+
+.social-icon:hover {
+  color: #f9b215; /* Ändrar färgen till orange vid hovring */
+}
+
+/* LUNCH.HTML + DINNER.HTML */
+/* var klurigt att justera pillrernas färg med Bootstrap esp. när dessa var aktiva/klickades osv. */
+
+/* Stil för aktivap piller */
+.nav-pills .nav-link.active {
+  background-color: #f9b215;
+  color: #212529;
+}
+
+/* Stil för inaktiva piller */
+.nav-pills .nav-link {
+  background-color: transparent;
+  color: #212529;
+}

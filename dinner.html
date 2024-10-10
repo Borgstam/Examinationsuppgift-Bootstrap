@@ -1,0 +1,753 @@
+<!-- Elev: Wilhelm Borgstam
+ Uppgift: Examinationsuppgift Ramverk - Bootstrap
+ Datum: 2024-10-10 -->
+ <!DOCTYPE html>
+ <html lang="sv">
+   <head>
+     <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <!-- Länk till Bootstrap CDN - för att ramverket ska fungera -->
+     <link
+       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+       rel="stylesheet"
+       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+       crossorigin="anonymous"
+     />
+     <!-- Länk till Fontawesome kit för ikoner -->
+     <script
+       src="https://kit.fontawesome.com/1b340deb9b.js"
+       crossorigin="anonymous"
+     ></script>
+     <link rel="stylesheet" href="style.css" />
+     <title>Kvällsmeny</title>
+   </head>
+   <body>
+     <!-- HEADER / NAVBAR -->
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+       <!-- Navbar: Definierar nav. Innehåller klasser för styling och layout:
+          navbar-expand-lg: Innehåll visas horisontellt på large skärmbredd >992px
+          navbar-dark: ljusa färger på text/länkar för synlighet på mörk bakgrund
+          bg-dark: mörk bakgrundsfärg
+          sticky-top: Fäster navbar vid scrollning
+     -->
+       <div class="container">
+         <!-- Container: Centrerar & padding runt innehåll. Begränsar bredd baserat på skärmstorlek -->
+         <a class="navbar-brand text-warning fs-4" href="index.html"
+           >Mat & Prat</a
+         >
+         <!-- Navbar-brand: Varumärkesnamnstilar i navbar 
+             text-warning: Applicerar gul färg 
+             fs-4: Ökar storleken på texten -->
+ 
+         <!-- HAMBURGARE -->
+         <button
+           class="navbar-toggler"
+           type="button"
+           data-bs-toggle="collapse"
+           data-bs-target="#navbarNav"
+         >
+           <!-- Navbar-toggler: Knapp för att visa/gömma menyn på små skärmar 
+              - data-bs-target: Anger vilket kollapsbart element -->
+           <span class="navbar-toggler-icon"></span>
+           <!-- Navbar-toggler-icon: Skapar burgare -->
+         </button>
+ 
+         <!-- Meny kollapsar vid små skärmar -->
+         <div class="collapse navbar-collapse" id="navbarNav">
+           <!-- Collapse: Döljer/visar menyinnehåll beroende på skärmstorlek -->
+           <ul class="navbar-nav ms-auto">
+             <!-- Navbar-nav: Stilar menylänkar för att passa navbar-layouten
+                - ms-auto: Flyttar menylänkarna till höger på större skärmar -->
+ 
+             <!-- MX-2 ökar margin mellan menyalternativen -->
+             <li class="nav-item mx-2">
+               <a class="nav-link" href="index.html">Hem</a>
+             </li>
+ 
+             <li class="nav-item mx-2">
+               <a class="nav-link" href="about.html">Om Oss</a>
+             </li>
+ 
+             <!-- DROPDOWN MENY -->
+             <li class="nav-item dropdown mx-2">
+               <!-- Dropdown: Visar undermeny -->
+               <a
+                 class="nav-link dropdown-toggle active"
+                 href="#"
+                 id="menyDropdown"
+                 role="button"
+                 data-bs-toggle="dropdown"
+               >
+                 Menyer
+               </a>
+               <div class="dropdown-menu" aria-labelledby="menyDropdown">
+                 <a class="dropdown-item" href="lunch.html">Lunchmeny</a>
+                 <a class="dropdown-item" href="dinner.html">Kvällsmeny</a>
+               </div>
+             </li>
+             <li class="nav-item mx-2">
+               <a class="nav-link text-warning" href="book.html">Boka bord</a>
+             </li>
+           </ul>
+         </div>
+       </div>
+     </nav>
+ 
+         <!-- BREADCRUMB SEKTION - inte helt nöjd med det rent estetiskt men har inkluderats för att demonstrera funktionaliteten -->
+         <section class="container-fluid bg-light py-4">
+           <!-- container-fluid: sträcker sektionen över hela skärmbredden -->
+           <div class="container">
+               <ol class="breadcrumb mb-0">
+                 <!-- breadcrumb: Bootstrap-styling för breadcrumbs -->
+                 <li class="breadcrumb-item">
+                     <!-- breadcrumb-item: definierar enskilt brödsmuleobjekt -->
+                   <a class="text-dark" href="index.html">Hem</a>
+                 </li>
+                 <li class="breadcrumb-item">
+                   Menyer
+                 </li>
+                 <li class="breadcrumb-item active" aria-current="page">Kvällsmeny</li>
+               </ol>
+             </nav>
+           </div>
+         </section>
+ 
+          <!-- MENY SEKTION MED NAV-PILLS -->
+          <div class="container py-5">
+            <!-- RUBRIK -->
+        <h1 class="display-4 text-dark mb-5 text-center">Kvällsmeny</h1>
+            <!-- NAVPILL KATEGORIER -->
+                <!-- nav: navigeringslista med Bootstrap styling
+            nav-pills: Gör länkar piller-formade -->
+            <ul
+              class="nav nav-pills mb-5 justify-content-center"
+              id="menuTabs"
+              role="tablist"
+              
+            >
+            <!-- PILLER 1 - FÖRRÄTT -->
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  id="forratt-tab"
+                  data-bs-toggle="pill"
+                  href="#forratt"
+                  role="tab"
+                  aria-controls="forratt"
+                  aria-selected="true"
+                >
+                <!-- active: anger aktiv flik som visas vid sidladdning
+                    data-bs-toggle="pill": använder Bootstraps fliksystem för att visa/dölja flikar
+                    href="forratt": anger ID för innehåll som visas vid aktiv flik
+                    aria-controls: tillgänglighetsattribut -->
+                  Förrätt
+                </a>
+              </li>
+              <!-- PILLER 2 - HUVUDRÄTT -->
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  id="huvudratt-tab"
+                  data-bs-toggle="pill"
+                  href="#huvudratt"
+                  role="tab"
+                  aria-controls="huvudratt"
+                  aria-selected="false"
+                >
+                  Huvudrätt
+                </a>
+              </li>
+              <!-- PILLER 3 - EFTERRÄTT -->
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  id="efterratt-tab"
+                  data-bs-toggle="pill"
+                  href="#efterratt"
+                  role="tab"
+                  aria-controls="efterratt"
+                  aria-selected="false"
+                >
+                  Efterrätt
+                </a>
+              </li>
+              <!-- PILLER 4 - DRYCK -->
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  id="dryck-tab"
+                  data-bs-toggle="pill"
+                  href="#dryck"
+                  role="tab"
+                  aria-controls="dryck"
+                  aria-selected="false"
+                >
+                  Dryck
+                </a>
+              </li>
+            </ul>
+      
+            <!-- NAVPILL INNEHÅLL -->
+            <div class="tab-content" id="menuTabsContent">
+              <!-- tab-content: behållare för flikinnehåll, visas endast för aktiv flik -->
+              <!-- FÖRRÄTT -->
+              <div
+                class="tab-pane fade show active"
+                id="forratt"
+                role="tabpanel"
+                aria-labelledby="forratt-tab"
+              >
+              <!-- tab-pane: anger att det är en flik
+                  fade: mjuk övergång mellan flikar
+                  show: anger att flik är synlig
+                  id="forratt": identiferare som matchar href attribut
+                  role="tabpanel"+arialabelledby: tillgänglighetsattribut -->
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/brooke-lark-C1fMH2Vej8A-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Förrätt"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/brooke-lark-C1fMH2Vej8A-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Förrätt"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/brooke-lark-C1fMH2Vej8A-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Förrätt"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/brooke-lark-C1fMH2Vej8A-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Förrätt"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/brooke-lark-C1fMH2Vej8A-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Förrätt"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+              </div>
+      
+              <!-- HUVUDRÄTT -->
+              <div
+                class="tab-pane fade"
+                id="huvudratt"
+                role="tabpanel"
+                aria-labelledby="huvudratt-tab"
+              >
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/erik-odiin-F_xGk7V0Xbc-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Hamburgare"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/erik-odiin-F_xGk7V0Xbc-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Hamburgare"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/erik-odiin-F_xGk7V0Xbc-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Hamburgare"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/erik-odiin-F_xGk7V0Xbc-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Hamburgare"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/erik-odiin-F_xGk7V0Xbc-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Hamburgare"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+              </div>
+      
+              <!-- EFTERRÄTT -->
+              <div
+                class="tab-pane fade"
+                id="efterratt"
+                role="tabpanel"
+                aria-labelledby="efterratt-tab"
+              >
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/jordane-mathieu-mLtIBNInDGY-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Efterrätt"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/jordane-mathieu-mLtIBNInDGY-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Efterrätt"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/jordane-mathieu-mLtIBNInDGY-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Efterrätt"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/jordane-mathieu-mLtIBNInDGY-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Efterrätt"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/jordane-mathieu-mLtIBNInDGY-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Efterrätt"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+              </div>
+      
+              <!-- DRYCK -->
+              <div
+                class="tab-pane fade"
+                id="dryck"
+                role="tabpanel"
+                aria-labelledby="dryck-tab"
+              >
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/mockup-free-iVMDkK7z7F4-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Wine bottle"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/mockup-free-iVMDkK7z7F4-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Wine bottle"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/mockup-free-iVMDkK7z7F4-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Wine bottle"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/mockup-free-iVMDkK7z7F4-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Wine bottle"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+                <div class="row mb-4 align-items-center">
+                  <div class="col-2 text-center">
+                    <img
+                      src="images/mockup-free-iVMDkK7z7F4-unsplash.webp"
+                      class="rounded-circle img-fluid"
+                      alt="Wine bottle"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <h5 class="mb-0">Lorem Ipsum</h5>
+                    <small class="text-muted">Lorem ipsum dolor sit amet.</small>
+                  </div>
+                  <div class="col-2 text-end text-dark fw-bold">99 SEK</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+<!-- LINE-DIVIDER för att tydligt dela menysektionen från kocksektionen -->
+     <div class="border-top pb-3"></div>
+ 
+     <!-- KOCKAR SEKTION -->
+     <section class="container my-5">
+       <div class="row text-center">
+         <!-- KOCK 1 -->
+         <div class="col-md-4 mb-4">
+           <div class="card border-0">
+             <!-- Border-0: tar bort standardram runt kort -->
+             <img
+               src="images/image.webp"
+               class="card-img-top rounded-circle mx-auto d-block w-75"
+               loading="lazy"
+              alt="Porträttbild på kock"
+             />
+             <!-- d-block: Gör bilden till blockelement vilket möjliggör mx-auto  
+                     mx-auto: Centrerar bild horisontellt inom förälder genom att sätta auto-marginal till vänster och höger
+                     w-75: Bildens bredd sätts till 75% av förälders bredd vilket gör den mindre-->
+ 
+             <div class="card-body">
+               <h5 class="card-title">Lorem Ipsumsson</h5>
+               <p class="card-text">Lorem ipsum dolor sit amet consectetur.</p>
+             </div>
+           </div>
+         </div>
+ 
+         <!-- KOCK 2 -->
+         <div class="col-md-4 mb-4">
+           <div class="card border-0">
+             <img
+               src="images/image.webp"
+               class="card-img-top rounded-circle mx-auto d-block w-75"
+               loading="lazy"
+              alt="Porträttbild på kock"
+             />
+             <div class="card-body">
+               <h5 class="card-title">Lorem Ipsumsson</h5>
+               <p class="card-text">Lorem ipsum dolor sit amet consectetur.</p>
+             </div>
+           </div>
+         </div>
+ 
+         <!-- KOCK 3 -->
+         <div class="col-md-4 mb-4">
+           <div class="card border-0">
+             <img
+               src="images/image.webp"
+               class="card-img-top rounded-circle mx-auto d-block w-75"
+               loading="lazy"
+              alt="Porträttbild på kock"
+             />
+             <div class="card-body">
+               <h5 class="card-title">Lorem Ipsumsson</h5>
+               <p class="card-text">Lorem ipsum dolor sit amet consectetur.</p>
+             </div>
+           </div>
+         </div>
+       </div>
+     </section>
+ 
+     <!-- RECENSIONER - SEKTION -->
+     <section class="py-5 bg-light">
+       <!-- py-5: lägger till vertikal padding -->
+       <div class="container text-center">
+         <!-- Carousel Wrapper -->
+         <div
+           id="testimonialCarousel"
+           class="carousel slide"
+           data-bs-ride="carousel"
+           data-bs-interval="5000"
+         >
+           <!-- carousel slide: Bootstrap-karusell som visar "slides" dvs. citat
+             data-ride="carousel": Aktiverar karusell vid sidladdning
+             data-interval="5000"': Tid mellan övergångarna. 5000[MS] = 5 sekunder -->
+ 
+           <div class="carousel-inner">
+             <!-- carousel-inner: definierar behållaren för karusellinnehåll
+           -->
+ 
+             <!-- RECENSION 1 -->
+             <div class="carousel-item active">
+               <!-- carousel-item: Används för varje karusell-element. Övergångar appliceras automatiskt av Bootstrap
+                 active: Anger att detta är aktuell slide som visas när karusellen laddas
+             -->
+               <p class="lead font-weight-bold display-6">
+                 <!-- display-6: skapar större rubrikstorlek
+               -->
+                 "Lorem ipsum dolor sit amet." - Kund Kundsson.
+               </p>
+             </div>
+ 
+             <!-- RECENSION 2 -->
+             <div class="carousel-item">
+               <p class="lead font-weight-bold display-6">
+                 "Lorem ipsum dolor sit amet consectetur adipisicing elit." -
+                 Nöjd Nöjdsson.
+               </p>
+             </div>
+           </div>
+         </div>
+       </div>
+     </section>
+ 
+     <!-- CTA Sektion  -->
+     <section class="container my-5 text-center py-5">
+       <h2>Boka ett bord idag!</h2>
+       <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+       <a href="book.html" class="btn btn-warning btn-lg px-5 py-3">Boka nu</a>
+       <!-- px-5: ökar padding på x-axeln
+             py-3: ökar padding på y-axeln -->
+     </section>
+ 
+     <!-- FOOTER -->
+     <footer class="bg-dark text-white py-5">
+       <div class="container">
+         <div>
+           <!-- Huvudfooter Rad -->
+           <div
+             class="row d-flex text-center text-md-left justify-content-between"
+           >
+             <!-- row: skapar en horisontell grupp
+                 d-flex: Flexbox aplliceras
+                 text-center: centrerar text horisontellt på mindre skärmar
+                 text-md-left: vänsterjusterartext på medium & större skärmar
+                 justify-content-between: skapar utrymme mellan grupperna
+                  -->
+             <!-- OM MAT & PRAT -->
+             <div class="col-md-3 mb-4">
+               <h5 class="text-uppercase">Om Mat & Prat</h5>
+               <!-- text-uppercase: Kapitaliserar text -->
+               <p class="small">
+                 <!-- small: gör textstorleken mindre -->
+                 Mat & Prat är lorem ipsum dolor sit amet consectetur adipisicing
+                 elit. Aperiam sit voluptas facere blanditiis debitis, ducimus
+                 cupiditate ratione quasi aliquam fugit.
+               </p>
+             </div>
+             <!-- SNABBLÄNKAR -->
+             <div class="col-md-4 mb-4 d-flex flex-column align-items-center">
+               <h5 class="text-uppercase text-white">Snabblänkar</h5>
+               <ul class="list-unstyled text-center">
+                 <!-- list-unstyled: tar bort ordinarie vanlig liststyling (punkter) -->
+                 <li>
+                  <a href="index.html" class="text-white text-decoration-none"
+                  >Hem</a
+                  >
+              </li>
+              <li>
+                  <a href="about.html" class="text-white text-decoration-none"
+                  >Om oss</a
+                  >
+              </li>
+              <li>
+                  <a href="lunch.html" class="text-white text-decoration-none"
+                  >Lunchmeny</a
+                  >
+              </li>
+              <li>
+                  <a href="dinner.html" class="text-white text-decoration-none"
+                  >Kvällsmeny</a
+                  >
+              </li>
+              <li>
+                  <a href="book.html" class="text-white text-decoration-none"
+                  >Boka bord</a
+                  >
+              </li>
+               </ul>
+             </div>
+             <!-- KONTAKTDEL -->
+             <div class="col-md-3 mb-4 text-center text-md-center">
+               <h5 class="text-uppercase">Kontakt</h5>
+               <p>
+                 <a
+                   href="https://www.google.com/maps"
+                   target="_blank"
+                   class="d-flex justify-content-center align-items-center mb-2 text-white text-decoration-none"
+                 >
+                   <i class="fas fa-map-marker-alt me-2"></i>
+                   Loremgatan 1, 12345 Ipsum
+                 </a>
+               </p>
+               <p>
+                 <a
+                   href="tel:+46812345678"
+                   class="d-flex justify-content-center align-items-center mb-2 text-white text-decoration-none"
+                 >
+                   <i class="fas fa-phone me-2"></i>
+                   Telefon: 08-123 456 78
+                 </a>
+               </p>
+               <p>
+                 <a
+                   href="mailto:info@matprat.se"
+                   class="d-flex justify-content-center align-items-center mb-2 text-white text-decoration-none"
+                 >
+                   <i class="fas fa-envelope me-2"></i>
+                   E-post: info@matprat.se
+                 </a>
+               </p>
+             </div>
+           </div>
+           <!-- SOCIALA MEDIEIKONER -->
+           <div class="row">
+             <div class="col text-center mb-4">
+               <div>
+                 <a href="#" class="social-icon mx-2"
+                   ><i class="fab fa-facebook"></i
+                 ></a>
+                 <a href="#" class="social-icon mx-2"
+                   ><i class="fab fa-instagram"></i
+                 ></a>
+                 <a href="#" class="social-icon mx-2"
+                   ><i class="fab fa-twitter"></i
+                 ></a>
+               </div>
+             </div>
+           </div>
+           <!-- COPYRIGHT DEL -->
+           <div class="row">
+             <div class="col text-center mt-3">
+               <p class="mb-0">
+                 &copy; 2024 Mat & Prat. Alla rättigheter reserverade.
+               </p>
+             </div>
+           </div>
+         </div>
+       </div>
+     </footer>
+     <script
+       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+       crossorigin="anonymous"
+     ></script>
+   </body>
+ </html>
+ 
