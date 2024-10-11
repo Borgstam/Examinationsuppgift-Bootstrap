@@ -1,6 +1,6 @@
 <!-- Elev: Wilhelm Borgstam
  Uppgift: Examinationsuppgift Ramverk - Bootstrap
- Datum: 2024-10-10 -->
+ Datum: 2024-10-11 -->
 <!DOCTYPE html>
 <html lang="sv">
   <head>
@@ -93,39 +93,35 @@
       </div>
     </nav>
 
-        <!-- BREADCRUMB SEKTION - inte helt nöjd med det rent estetiskt men har inkluderats för att demonstrera funktionaliteten -->
-        <section class="container-fluid bg-light py-4">
-          <!-- container-fluid: sträcker sektionen över hela skärmbredden -->
-          <div class="container">
-              <ol class="breadcrumb mb-0">
-                <!-- breadcrumb: Bootstrap-styling för breadcrumbs -->
-                <li class="breadcrumb-item">
-                    <!-- breadcrumb-item: definierar enskilt brödsmuleobjekt -->
-                  <a class="text-dark" href="index.html">Hem</a>
-                </li>
-                <li class="breadcrumb-item">
-                  Menyer
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">Lunchmeny</li>
-              </ol>
-            </nav>
-          </div>
-        </section>
+    <!-- BREADCRUMB SEKTION - inte helt nöjd med det rent estetiskt men har inkluderats för att demonstrera funktionaliteten -->
+    <section class="container-fluid bg-light py-4">
+      <!-- container-fluid: sträcker sektionen över hela skärmbredden -->
+      <div class="container">
+        <ol class="breadcrumb mb-0">
+          <!-- breadcrumb: Bootstrap-styling för breadcrumbs -->
+          <li class="breadcrumb-item">
+            <!-- breadcrumb-item: definierar enskilt brödsmuleobjekt -->
+            <a class="text-dark" href="index.html">Hem</a>
+          </li>
+          <li class="breadcrumb-item">Menyer</li>
+          <li class="breadcrumb-item active" aria-current="page">Lunchmeny</li>
+        </ol>
+      </div>
+    </section>
 
-        <!-- MENY SEKTION MED NAV-PILLS -->
+    <!-- MENY SEKTION MED NAV-PILLS -->
     <div class="container py-5">
       <!-- RUBRIK -->
-  <h1 class="display-4 text-dark mb-5 text-center">Lunchmeny</h1>
+      <h1 class="display-4 text-dark mb-5 text-center">Lunchmeny</h1>
       <!-- NAVPILL KATEGORIER -->
-          <!-- nav: navigeringslista med Bootstrap styling
+      <!-- nav: navigeringslista med Bootstrap styling
       nav-oills: Gör länkar piller-formade -->
       <ul
         class="nav nav-pills mb-5 justify-content-center"
         id="menuTabs"
         role="tablist"
-        
       >
-      <!-- PILLER 1 - FÖRRÄTT -->
+        <!-- PILLER 1 - FÖRRÄTT -->
         <li class="nav-item">
           <a
             class="nav-link active"
@@ -136,7 +132,7 @@
             aria-controls="forratt"
             aria-selected="true"
           >
-          <!-- active: anger aktiv flik som visas vid sidladdning
+            <!-- active: anger aktiv flik som visas vid sidladdning
               data-bs-toggle="pill": använder Bootstraps fliksystem för att visa/dölja flikar
               href="forratt": anger ID för innehåll som visas vid aktiv flik
               aria-controls: tillgänglighetsattribut -->
@@ -197,7 +193,7 @@
           role="tabpanel"
           aria-labelledby="forratt-tab"
         >
-        <!-- tab-pane: anger att det är en flik
+          <!-- tab-pane: anger att det är en flik
             fade: mjuk övergång mellan flikar
             show: anger att flik är synlig
             id="forratt": identiferare som matchar href attribut
@@ -513,8 +509,8 @@
       </div>
     </div>
 
-<!-- LINE-DIVIDER för att tydligt dela menysektionen från kocksektionen -->
-<div class="border-top pb-3"></div>
+    <!-- LINE-DIVIDER för att tydligt dela menysektionen från kocksektionen -->
+    <div class="border-top pb-3"></div>
 
     <!-- KOCKAR SEKTION -->
     <section class="container my-5">
@@ -601,15 +597,15 @@
               <p class="lead font-weight-bold display-6">
                 <!-- display-6: skapar större rubrikstorlek
               -->
-                "Lorem ipsum dolor sit amet." - Kund Kundsson.
+                Lorem ipsum dolor sit amet. - Kund Kundsson.
               </p>
             </div>
 
             <!-- RECENSION 2 -->
             <div class="carousel-item">
               <p class="lead font-weight-bold display-6">
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit." -
-                Nöjd Nöjdsson.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. - Nöjd
+                Nöjdsson.
               </p>
             </div>
           </div>
@@ -627,6 +623,7 @@
     </section>
 
     <!-- FOOTER -->
+    <!-- Valde att styla i Bootstrap men om jag hade gjort det hela själv hade jag använt egen CSS för mer kontroll såsom jag gjorde med sociala medieikonerna. -->
     <footer class="bg-dark text-white py-5">
       <div class="container">
         <div>
@@ -658,29 +655,29 @@
                 <!-- list-unstyled: tar bort ordinarie vanlig liststyling (punkter) -->
                 <li>
                   <a href="index.html" class="text-white text-decoration-none"
-                  >Hem</a
+                    >Hem</a
                   >
-              </li>
-              <li>
+                </li>
+                <li>
                   <a href="about.html" class="text-white text-decoration-none"
-                  >Om oss</a
+                    >Om oss</a
                   >
-              </li>
-              <li>
+                </li>
+                <li>
                   <a href="lunch.html" class="text-white text-decoration-none"
-                  >Lunchmeny</a
+                    >Lunchmeny</a
                   >
-              </li>
-              <li>
+                </li>
+                <li>
                   <a href="dinner.html" class="text-white text-decoration-none"
-                  >Kvällsmeny</a
+                    >Kvällsmeny</a
                   >
-              </li>
-              <li>
+                </li>
+                <li>
                   <a href="book.html" class="text-white text-decoration-none"
-                  >Boka bord</a
+                    >Boka bord</a
                   >
-              </li>
+                </li>
               </ul>
             </div>
             <!-- KONTAKTDEL -->
