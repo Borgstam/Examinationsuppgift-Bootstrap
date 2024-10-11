@@ -4,8 +4,17 @@ Uppgift: Examinationsuppgift Ramverk - Bootstrap
 Datum: 2024-10-11
  */
 
-/* Index.html */
+/* För logotypen i headern på alla sidor */
+.navbar-brand {
+  font-family: serif;
+}
 
+/* H1 på alla sidor. För de sidor där Euphoria Script ej lämpar sig (Menyer & Boka) så har jag inte lagt till importen från Google Fonts så att serif aktiveras istället */
+h1 {
+  font-family: "Euphoria Script", serif;
+}
+
+/* Index.html */
 /* Hade svårighet med att få till en snygg hero sektion på startsidan och till slut tröttnade jag och använde mig av följande CSS kod */
 .hero {
   height: 75vh; /* Ser till att den tar upp 75vh för att indikera för besökaren att det finns innehåll som den bör scrolla ner för att se */

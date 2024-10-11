@@ -112,12 +112,12 @@
     <!-- MENY SEKTION MED NAV-PILLS -->
     <div class="container py-5">
       <!-- RUBRIK -->
-      <h1 class="display-4 text-dark mb-5 text-center">Kvällsmeny</h1>
+      <h1 class="display-3 text-dark mb-3 text-center">Kvällsmeny</h1>
       <!-- NAVPILL KATEGORIER -->
       <!-- nav: navigeringslista med Bootstrap styling
-            nav-pills: Gör länkar piller-formade -->
+      nav-oills: Gör länkar piller-formade -->
       <ul
-        class="nav nav-pills mb-5 justify-content-center"
+        class="nav nav-pills mb-4 justify-content-center"
         id="menuTabs"
         role="tablist"
       >
@@ -133,9 +133,9 @@
             aria-selected="true"
           >
             <!-- active: anger aktiv flik som visas vid sidladdning
-                    data-bs-toggle="pill": använder Bootstraps fliksystem för att visa/dölja flikar
-                    href="forratt": anger ID för innehåll som visas vid aktiv flik
-                    aria-controls: tillgänglighetsattribut -->
+              data-bs-toggle="pill": använder Bootstraps fliksystem för att visa/dölja flikar
+              href="forratt": anger ID för innehåll som visas vid aktiv flik
+              aria-controls: tillgänglighetsattribut -->
             Förrätt
           </a>
         </li>
@@ -183,6 +183,9 @@
         </li>
       </ul>
 
+      <!-- LINE-DIVIDER för att det ska se lite snyggare ut och fylla det vita utrymmet lite -->
+      <div class="border-top pb-4"></div>
+
       <!-- NAVPILL INNEHÅLL -->
       <div class="tab-content" id="menuTabsContent">
         <!-- tab-content: behållare för flikinnehåll, visas endast för aktiv flik -->
@@ -194,10 +197,10 @@
           aria-labelledby="forratt-tab"
         >
           <!-- tab-pane: anger att det är en flik
-                  fade: mjuk övergång mellan flikar
-                  show: anger att flik är synlig
-                  id="forratt": identiferare som matchar href attribut
-                  role="tabpanel"+arialabelledby: tillgänglighetsattribut -->
+            fade: mjuk övergång mellan flikar
+            show: anger att flik är synlig
+            id="forratt": identiferare som matchar href attribut
+            role="tabpanel"+arialabelledby: tillgänglighetsattribut -->
           <div class="row mb-4 align-items-center">
             <div class="col-2 text-center">
               <img
